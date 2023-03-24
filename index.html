@@ -6,12 +6,12 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    
+   
     <title>Document</title>
 </head>
 <body>
     
-    <div id="app"></div>
+    <div id="root"></div>
     
     <script type="text/babel">
         class App extends React.Component {
@@ -19,16 +19,28 @@
                 name : 'Giang',
                 age : 31
             }
+            handleClick(e){
+                console.log(e.target)
+            }
+            handleMouseOver(e){
+                console.log(e.target, e.pageX)
+            }
+            handleCopy(e){
+                console.log('Try being original for once!')
+            }
             render(){
                 return(
                     <div className="app_header">
                         <h1>Hello World!</h1>
                         <p>My name is { this.state.name } and I am { this.state.age }</p>
+                        <button onClick={this.handleClick}> Click Me </button>
+                        <button onMouseOver={this.handleMouseOver}> Hover me</button>
+                        <p onCopy={this.handleCopy}> What we think, we become </p>
                     </div>
                 )
             }
         }
-        ReactDOM.render(<App />, document.getElementById('app'));
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 
 </body>
